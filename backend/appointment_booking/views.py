@@ -30,5 +30,7 @@ class AppointmentViewSet(viewsets.ModelViewSet):
         patient = Patient.objects.get(pk=request.data.get("patient_pk"))
         logger.info("Booking appointment %s for patient %s", appointment.pk, patient.pk)
         # TODO: implement appointment booking logic
+        appointment.patient_id = patient
+        appointment.save()
         serializer = AppointmentSerializer(appointment)
         return Response(serializer.data, status=status.HTTP_200_OK)

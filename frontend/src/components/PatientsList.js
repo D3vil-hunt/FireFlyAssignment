@@ -1,27 +1,4 @@
-import { useState, useEffect } from "react";
-import { API_BASE_URL } from "../App";
-import axios from "axios";
-
-const fetchPatients = async () => {
-  try {
-    const result = await axios.get(API_BASE_URL + "/patients/");
-    return result.data;
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
-};
-
-const PatientsList = () => {
-  const [patients, setPatients] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const result = await fetchPatients();
-      setPatients(result);
-    })();
-  }, []);
-
+const PatientsList = (patients) => {
   return (
     <>
       <h2>Patients</h2>
