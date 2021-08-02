@@ -43,9 +43,11 @@ const App = () => {
     const patients = await fetchPatients();
     setPatients(patients);
   };
+  
 
   useEffect(() => {
-    refetchAppointments();
+      refetchAppointments();
+      refetchPatients();
   }, []);
 
   return (
